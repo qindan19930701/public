@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script type="text/javascript" src="https://webapi.amap.com/maps?v=1.4.14&key=6d678f057f2e069e9d779c5a8eb4d5fa"></script>
+  <style>
+  #container{
+    height: 700px;
+    width: 100%;
+  }
+  </style>
+</head>
+
+<body>
+  <div id="container"></div>
+
+  <script>
+    var map = new AMap.Map('container', {
+      resizeEnable: true,
+      zoom: 11,
+      center: [116.397428, 39.90923],
+      viewMode: '3D'
+    })
+    AMap.plugin('AMap.ToolBar',function(){//异步加载插件
+        var toolbar = new AMap.ToolBar();
+        map.addControl(toolbar);
+        var driving = new AMap.Driving();//驾车路线规划
+        driving.search(/*参数*/)
+    });
+    //实时路况图层
+    var trafficLayer = new AMap.TileLayer.Traffic({
+        zIndex: 10
+    });
+    map.add(trafficLayer);//添加图层到地图
+  </script>
+</body>
+
+</html>

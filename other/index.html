@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script src="./vue.js"></script>
+  <link rel="stylesheet" href="./animate.css">
+  <style>
+    #box {
+      height: 200px;
+      width: 200px;
+      background: red;
+      position: absolute;
+    }
+
+    /* .v-enter,.v-leave-to{
+     left:200px;
+     opacity: 0;
+   }
+   .v-enter-to,.v-leave{
+     left:0px;
+     opacity: 1;
+   }
+   .v-enter-active,.v-leave-active{
+     transition:all 2s;
+   }
+   */
+   button{
+     margin-top:200px;
+   }
+  </style>
+</head>
+
+<body>
+  <div id="app">
+    <transition name="custom-classes-transition"
+      enter-active-class="animated tada"
+      leave-active-class="animated bounceOutRight">
+      <div id="box" v-show="isShow"></div>
+    </transition>
+    <button @click="changeShow()">按钮</button>
+  </div>
+
+  <script>
+    // 实例化vue对象
+    const vm = new Vue({
+      // 指定vue管理的视图
+      el: '#app',
+      data: {
+        isShow: true
+      },
+      methods: {
+        changeShow() {
+          this.isShow = !this.isShow
+        }
+      }
+    })
+  </script>
+
+</body>
+
+</html>
